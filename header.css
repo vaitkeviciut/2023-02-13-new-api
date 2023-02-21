@@ -1,0 +1,51 @@
+.main-navigation {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 20px 40px;
+    background-color: rgb(193, 185, 175);
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 5px;
+    border: none;
+}
+
+.search-button {
+    padding: 5px 10px;
+    background-color: #4F4F4F;
+    color: white;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: rgb(151, 129, 22);
+}
+
+.menu {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    gap: 50px;
+    margin: 0;
+}
+
+.navigation-item {
+    text-decoration: none;
+    color: #4F4F4F;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.navigation-item:hover {
+    color: rgb(151, 129, 22);
+}
