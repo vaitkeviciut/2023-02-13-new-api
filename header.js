@@ -2,8 +2,15 @@ export function navigationElement() {
     const header = document.createElement('header');
     const nav = document.createElement('nav');
     nav.classList.add('main-navigation');
+    const menuNavWrapper = document.createElement('div');
+    menuNavWrapper.classList.add('menu-nav-wrapper')
+    const logo = document.createElement('a')
+    logo.textContent = 'API website';
+    logo.classList.add('logo-link')
+    logo.href = './index.html';
     const menuList = document.createElement('ul');
     menuList.classList.add('menu');
+    
 
     const searchForm = document.createElement('form');
     searchForm.classList.add('search-form');
@@ -27,12 +34,12 @@ export function navigationElement() {
             src: 'users.html'
         },
         {
-            name: 'Albums',
-            src: 'albums.html'
-        },
-        {
             name: 'Posts',
             src: 'posts.html'
+        },
+        {
+            name: 'Albums',
+            src: 'albums.html'
         }
     ]
 
@@ -56,7 +63,8 @@ export function navigationElement() {
         menuList.append(menuItemElement);
     })
     searchForm.append(searchInput, searchButton)
-    nav.append(searchForm, menuList);
+    menuNavWrapper.append(searchForm, menuList);
+    nav.append(logo, menuNavWrapper)
     header.append(nav);
     return header;
 }
