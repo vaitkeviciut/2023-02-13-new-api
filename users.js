@@ -31,6 +31,7 @@ function createUsersListElement(users) {
         let link = document.createElement('a');
         link.href = `./user.html?user_id=${user.id}`;
         link.textContent = userName
+        link.classList.add('users-list-item-link')
         
         listItem.append(link, userPosts);
         usersList.append(listItem);

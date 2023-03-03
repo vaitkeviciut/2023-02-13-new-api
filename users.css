@@ -22,10 +22,13 @@
 .users-list-item-link {
     text-decoration: none;
     color: #4F4F4F;
-    
-    
 }
 
 .users-list-item-link:hover {
     color: rgb(163, 149, 125);
+}
+
+.user-posts-count {
+    color: #8a8a8a;
+    font-size: 13px;
 }

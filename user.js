@@ -31,35 +31,96 @@ function createUserListElement(user) {
     let userInfoWrapper = document.createElement('div');
     userInfoWrapper.classList.add('user-info-wrapper');
 
+    let userPhotoWrapper = document.createElement('div');
+    userPhotoWrapper.classList.add('user-photo-wrapper');
+
+    let userTextWrapper = document.createElement('div');
+    userTextWrapper.classList.add('user-text-wrapper');
+
+    
+
+    let image = document.createElement('img');
+    image.classList.add('user-photo');
+
+
+
+
+    let nameWrapper = document.createElement('div');
+    nameWrapper.classList.add('name-wrapper')
+
     let userNameTitle = document.createElement('h1');
     userNameTitle.textContent = name;
+    userNameTitle.classList.add('user-name')
 
-    let userUsernameTitle = document.createElement('h5');
-    userUsernameTitle.textContent = 'User username:';
-    let userUsername = username;
+    let userUsername = document.createElement('span');
+    userUsername.textContent = `(${username})`;
+    userUsername.classList.add('username-text')
 
-    let userAddressTitle = document.createElement('h5');
-    userAddressTitle.textContent = 'User address:';
+    nameWrapper.append(userNameTitle, userUsername)
+
+
+
+    let userCompanyWrapper = document.createElement('div');
+    userCompanyWrapper.classList.add('user-company-wrapper')
+
+    let userWebsite = document.createElement('a');
+    userWebsite.textContent = website;
+    userWebsite.href = './#'
+    userWebsite.classList.add('user-web-item')
+
+    let userCompanyName = document.createElement('span');
+    userCompanyName.textContent = `Works @ ${companyName}`;
+    userCompanyName.classList.add('user-company-item')
+
+    userCompanyWrapper.append(userCompanyName, userWebsite)
+
+    
+
+
+    let userContactsTitle = document.createElement('ul');
+    userContactsTitle.textContent = 'User contacts:';
+    userContactsTitle.classList.add('user-contacts-list')
+
+    let userPhone = document.createElement('li');
+    userPhone.classList.add('user-list-item')
+
+    let userPhoneLink = document.createElement('a');
+    userPhoneLink.textContent = phone;
+    userPhoneLink.classList.add('user-list-link')
+    userPhoneLink.href = `tel:${phone}`
+    
+    userPhone.append(userPhoneLink)
+
+    let userEmail = document.createElement('li');
+    userEmail.classList.add('user-list-item')
+
+    let userEmailLink = document.createElement('a');
+    userEmailLink.textContent = firstLetterLowerCase(email);
+    userEmailLink.classList.add('user-list-link')
+    userEmailLink.href = `mailto:${firstLetterLowerCase(email)}`
+
+    userEmail.append(userEmailLink)
+    
+    userContactsTitle.append(userPhone, userEmail);
+
+
+
+
+    let userAddressWrapper = document.createElement('div');
+    userAddressWrapper.classList.add('user-address-wrapper')
+
     let userAddress = `${street} street - ${suite}, ${city}, ${zipcode}`;
     let addressLink = document.createElement('a');
     addressLink.href = `https://www.google.com/maps/place/${lat}, ${lng}`;
     addressLink.target = '_blank';
+    addressLink.classList.add('adress-link')
     let link = document.createTextNode(userAddress);
     addressLink.append(link);
+
+    userAddressWrapper.append(addressLink)
+
     
-    let userContactsTitle = document.createElement('ul');
-    userContactsTitle.textContent = 'User contacts:';
 
-    let userPhone = document.createElement('li');
-    userPhone.textContent = phone;
-    let userEmail = document.createElement('li');
-    userEmail.textContent = firstLetterLowerCase(email);
-    let userWebsite = document.createElement('li');
-    userWebsite.textContent = website;
-    let userCompanyName = document.createElement('li');
-    userCompanyName.textContent = companyName;
-
-    userContactsTitle.append(userPhone, userEmail, userWebsite, userCompanyName);
 
     let postsWrapper = document.createElement('div');
     postsWrapper.classList.add('posts-wrapper');
@@ -75,31 +136,44 @@ function createUserListElement(user) {
     albumsTitle.textContent = 'User albums:';
     albumsWrapper.append(albumsTitle);
 
+
+    let albumsLinksWrapper = document.createElement('div');
+    albumsLinksWrapper.classList.add('albums-link-wrapper');
+
     posts.map(post => {
         let postTitle = document.createElement('h4');
         postTitle.textContent = firstLetterUpperCase(post.title);
+        postTitle.classList.add('user-post-title')
+
+        let postBody = document.createElement('p');
+        postBody.textContent = firstLetterUpperCase(post.body);
+        postBody.classList.add('user-post-body')
 
         let postLink = document.createElement('a');
         postLink.href = `./post.html?post_id=${post.id}`;
+        postLink.classList.add('post-link')
         console.log(postLink)
 
-        let postBody = document.createElement('p');
-
-        postLink.append(postTitle);
-        postsWrapper.append(postLink, postBody);
+        postLink.append(postTitle, postBody);
+        postsWrapper.append(postLink);
 
         albums.map(album => {
           let userAlbumTitle = document.createElement('h4');
           userAlbumTitle.textContent = firstLetterUpperCase(album.title);
+          userAlbumTitle.classList.add('user-album-title')
 
           let albumLink = document.createElement('a');
           albumLink.href = `./album.html?album_id=${album.id}`;
+          albumLink.classList.add('album-link')
 
           albumLink.append(userAlbumTitle);
-          albumsWrapper.append(albumLink);
+          albumsLinksWrapper.append(albumLink)
+          albumsWrapper.append(albumsLinksWrapper);
         })
     })
-    userInfoWrapper.append(userNameTitle, userUsernameTitle, userUsername, userAddressTitle, addressLink, userContactsTitle);
+    userTextWrapper.append(nameWrapper, userCompanyWrapper, userContactsTitle, userAddressWrapper);
+
+    userInfoWrapper.append(userPhotoWrapper, userTextWrapper)
 
     userWrapper.append(userInfoWrapper, postsWrapper, albumsWrapper);
     return userWrapper;

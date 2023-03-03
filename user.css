@@ -1,0 +1,142 @@
+.user-wrapper {
+    font-family: 'Golos Text', sans-serif;
+    color: #4F4F4F;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+.user-info-wrapper {
+    background-color: white;
+    padding: 100px 250px 70px;
+    border-radius: 20px;
+}
+
+
+
+.name-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.user-name {
+    font-size: 30px;
+    margin: 0px;
+}
+.username-text {
+    font-size: 20px;
+}
+
+
+
+.user-company-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.user-company-item {
+    font-size: 17px;
+}
+.user-web-item {
+    text-decoration: none;
+    color: #4F4F4F;
+}
+.user-web-item:hover {
+    color: rgb(163, 149, 125);
+}
+
+
+
+.user-contacts-list {
+    list-style-type: none;
+    font-weight: 700;
+    padding-left: 0;
+    margin: 50px 0 25px;
+}
+.user-list-link {
+    text-decoration: none;
+    color: #4F4F4F;
+    font-weight: 400;
+    font-size: 15px;
+}
+.user-list-link:hover {
+    color: rgb(163, 149, 125);
+}
+
+
+
+.user-address {
+    margin: 0;
+    font-weight: 400;
+    font-size: 15px;
+}
+.adress-link {
+    text-decoration: none;
+    color: #959595;
+}
+.adress-link:hover {
+    color: rgb(199, 180, 148);
+}
+
+
+
+.posts-wrapper, 
+.albums-wrapper {
+    background-color: white;
+    padding: 50px 100px 70px;
+    border-radius: 20px;
+}
+
+.posts-title, 
+.albums-title {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.post-link, 
+.album-link {
+    text-decoration: none;
+    color: #4F4F4F;
+    background-color: white; 
+}
+.post-link:hover, 
+.album-link:hover {
+    color: rgb(199, 180, 148);
+}
+.user-post-title, 
+.user-album-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.user-post-body {
+    border-bottom: 1px solid rgb(204, 204, 204);
+    padding-bottom: 30px;
+    font-size: 14px;
+    color: #959595;
+}
+
+
+
+.albums-link-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    
+}
+
+.album-link {
+    border-top: 1px solid rgb(204, 204, 204);
+}
+.user-album-title {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
