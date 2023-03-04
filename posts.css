@@ -1,0 +1,71 @@
+.posts-wrapper {
+    font-family: 'Golos Text', sans-serif;
+    color: #4F4F4F;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.one-post-wrapper {
+    background-color: white;
+    padding: 50px 100px 40px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-shortcut-wrapper {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.user-photo-small {
+    border-radius: 50%;
+}
+
+.user-shortcut-near-photo-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.user-name-link {
+    text-decoration: none;
+    color: #4F4F4F;
+}
+
+.user-name-username-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.user-company-wrapper {
+    font-size: 14px;
+}
+
+.user-name-post {
+    margin: 0;
+}
+
+.posts-list-item-link {
+    text-decoration: none;
+    color: #4F4F4F;
+}
+
+.post-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.post-body {
+    font-size: 15px;
+    color: #959595;
+}

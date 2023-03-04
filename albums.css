@@ -1,0 +1,45 @@
+.albums-list-wrapper {
+    font-family: 'Golos Text', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 50px;
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.album-link {
+    text-decoration: none;
+    color: #4F4F4F;
+}
+
+.album-text-wrapper:hover {
+    color: rgb(199, 180, 148);
+}
+
+.photo-count {
+    font-weight: 400;
+    margin-left: 7px;
+}
+
+.album-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.album-title {
+    margin-top: 0;
+}
+
+.author-wrapper {
+    text-decoration: underline;
+    
+}
+
+.user-name-albums {
+    margin: 0;
+}

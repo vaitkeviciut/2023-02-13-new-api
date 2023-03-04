@@ -10,7 +10,6 @@ async function init() {
 
     const res = await fetch(`${API_URL}/users/${id}?_embed=posts&_embed=albums`);
     const user = await res.json();
-    console.log(user);
 
     const pageContent = document.querySelector('#page-content');
     const userWrapper = createUserListElement(user);
@@ -38,11 +37,12 @@ function createUserListElement(user) {
     userTextWrapper.classList.add('user-text-wrapper');
 
     
-
     let image = document.createElement('img');
     image.classList.add('user-photo');
+    image.src = './images/user-picture.jpg'
+    image.width = '250'
 
-
+    userPhotoWrapper.append(image)
 
 
     let nameWrapper = document.createElement('div');
@@ -140,6 +140,10 @@ function createUserListElement(user) {
     let albumsLinksWrapper = document.createElement('div');
     albumsLinksWrapper.classList.add('albums-link-wrapper');
 
+
+    
+
+
     posts.map(post => {
         let postTitle = document.createElement('h4');
         postTitle.textContent = firstLetterUpperCase(post.title);
@@ -154,8 +158,50 @@ function createUserListElement(user) {
         postLink.classList.add('post-link')
         console.log(postLink)
 
-        postLink.append(postTitle, postBody);
-        postsWrapper.append(postLink);
+        let userPostWrapper = document.createElement('div');
+        userPostWrapper.classList.add('user-post-wrapper')
+
+
+
+        let imageSmall = document.createElement('img');
+        imageSmall.classList.add('user-photo-small');
+        imageSmall.src = './images/user-picture.jpg'
+        imageSmall.width = '40'
+
+
+        let nameTextWrapper = document.createElement('div');
+        nameTextWrapper.classList.add('name-text-wrapper')
+
+        let userNameTitlePost = document.createElement('h3');
+        userNameTitlePost.textContent = name;
+        userNameTitlePost.classList.add('user-name-post')
+
+        let userUsernamePost = document.createElement('span');
+        userUsernamePost.textContent = `(${username})`;
+        userUsernamePost.classList.add('username-text-post')
+
+        let userPostNearPhotoWrapper = document.createElement('div')
+        userPostNearPhotoWrapper.classList.add('user-post-near-photo-wrapper')
+
+        let userCompanyWrapperPost = document.createElement('div');
+        userCompanyWrapperPost.classList.add('user-company-wrapper-post')
+
+        let userCompanyNamePost = document.createElement('span');
+        userCompanyNamePost.textContent = `Works @ ${companyName}`;
+        userCompanyNamePost.classList.add('user-company-item-post')
+
+        let userPostWrapperLink = document.createElement('div');
+        userPostWrapperLink.classList.add('user-post-wrapper-link')
+
+
+        userCompanyWrapperPost.append(userCompanyNamePost)
+        nameTextWrapper.append(userNameTitlePost, userUsernamePost)
+        userPostNearPhotoWrapper.append(nameTextWrapper, userCompanyWrapperPost)
+        userPostWrapper.append(imageSmall, userPostNearPhotoWrapper)
+
+        postLink.append(userPostWrapper, postTitle, postBody);
+        userPostWrapperLink.append(postLink);
+        postsWrapper.append(userPostWrapperLink);
 
         albums.map(album => {
           let userAlbumTitle = document.createElement('h4');

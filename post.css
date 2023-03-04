@@ -1,0 +1,67 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.post-wrapper {
+    font-family: 'Golos Text', sans-serif;
+    color: #4F4F4F;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: white;
+    padding: 50px 100px 50px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post-content-wrapper {
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.comments-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.coments-title {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.one-comment-wrapper {
+    background-color: #f0f0f0;
+    padding: 30px 70px;
+    margin: 0 50px;
+    border-radius: 15px;
+}
+
+.comment-email {
+    font-weight: 700;
+}
+
+.comment-title {
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.author-post-link {
+    color: #4F4F4F;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.author-post-link:hover {
+    color: rgb(199, 180, 148);
+
+}
+

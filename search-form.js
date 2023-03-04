@@ -1,7 +1,6 @@
 export default function searchForm() {
     const form = document.createElement('form');
     form.classList.add('search-form');
-    // form.setAttribute('action', './search.html');
     form.action = './search.html';
   
     const searchInput = document.createElement('input');

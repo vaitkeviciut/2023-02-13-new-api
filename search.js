@@ -7,7 +7,7 @@ async function init() {
   const searchQuery = getParams('search-query');
   const pageContent = document.querySelector('#page-content');
 
-  pageContent.before(navigationElement(true));
+  pageContent.before(navigationElement(false));
 
   const form = searchForm();
   const allSearchResults = await renderAllSearchResults(searchQuery);
@@ -99,11 +99,27 @@ async function renderAllSearchResults(searchQuery) {
     }
   })
 
+  const commentsSearchData = comments.map(comment => {
+    return {
+      title: `${firstLetterUpperCase(comment.title)}, created by ${comment.user.name}`,
+      path: './album.html?album_id=' + comment.id,
+    }
+  })
+
+  const photosSearchData = photos.map(photo => {
+    return {
+      title: `${firstLetterUpperCase(photo.title)}, created by ${photo.user.name}`,
+      path: './album.html?album_id=' + photo.id,
+    }
+  })
+
   const searchUsers = searchResults(usersSearchData, 'users');
   const searchPosts = searchResults(postsSearchData, 'posts');
   const searchAlbums = searchResults(albumsSearchData, 'albums');
+  const searchComments = searchResults(commentsSearchData, 'comments')
+  const searchPhotos = searchResults(photosSearchData, 'photos')
 
-  allSearchResults.append(searchUsers, searchPosts, searchAlbums);
+  allSearchResults.append(searchUsers, searchPosts, searchAlbums, searchComments, searchPhotos);
 
   return allSearchResults;
 }

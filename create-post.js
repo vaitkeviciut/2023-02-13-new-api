@@ -24,12 +24,6 @@ async function init() {
     const body = event.target.body.value;
     const userId = Number(event.target.user.value);
 
-    // const createdUserData = {
-    //   title: title,
-    //   body: body,
-    //   userId: userId
-    // }
-
     const createdUserData = {
       title,
       body,
@@ -63,6 +57,7 @@ async function createNewPostElement(postData) {
   
   const postItem = document.createElement('div');
   postItem.classList.add('post-item');
+
 
   postItem.innerHTML = `<h2 class="post-title">${firstLetterUpperCase(title)} (id: ${id})</h2>
                         <span class="post-author">Author: ${user.name}</span>

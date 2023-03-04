@@ -20,19 +20,23 @@ async function init() {
 
 function createUserAlbumElement(album) {
     let { title, photos, user } = album;
-    let userName = user.name;
+    let userName = document.createElement('h3');
+    userName.textContent = user.name;
+    userName.classList.add('user-name')
 
     let albumWrapper = document.createElement('div');
     albumWrapper.classList.add('album-wrapper');
 
-
     let userAlbumWrapper = document.createElement('div');
     userAlbumWrapper.classList.add('user-album-wrapper');
+
     let albumTitle = document.createElement('h3')
     albumTitle.textContent = firstLetterUpperCase(title);
+    albumTitle.classList.add('album-title');
 
     let userNameLink = document.createElement('a');
     userNameLink.href = `./user.html?user_id=${user.id}`;
+    userNameLink.classList.add('user-name-link')
 
     userNameLink.append(userName);
     userAlbumWrapper.append(albumTitle, userNameLink)

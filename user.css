@@ -7,16 +7,31 @@
     max-width: 1000px;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 
 
 .user-info-wrapper {
     background-color: white;
-    padding: 100px 250px 70px;
-    border-radius: 20px;
+    padding: 100px 100px 70px;
+    border-radius: 15px;
+    display: flex;
+    gap: 40px;
+    justify-content: space-around;
 }
 
+.user-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-photo, 
+.user-photo-small {
+    border-radius: 50%;
+}
 
 
 .name-wrapper {
@@ -91,22 +106,53 @@
 .albums-wrapper {
     background-color: white;
     padding: 50px 100px 70px;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
-.posts-title, 
-.albums-title {
-    font-size: 20px;
+.user-post-wrapper-link {
+    padding: 50px 0 35px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.user-post-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.user-post-near-photo-wrapper {
+    font-size: 13px;
+}
+
+.name-text-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.user-name-post {
+    margin: 0;
+}
+
+.posts-title {
+    margin-bottom: 0;
+    font-size: 25px;
     text-transform: uppercase;
+    font-weight: 400;
 }
-
+ 
+.albums-title {
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+ 
 .post-link, 
 .album-link {
     text-decoration: none;
     color: #4F4F4F;
-    background-color: white; 
 }
-.post-link:hover, 
+ 
 .album-link:hover {
     color: rgb(199, 180, 148);
 }
@@ -114,11 +160,10 @@
 .user-album-title {
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    margin-top: 35px;
 }
 .user-post-body {
-    border-bottom: 1px solid rgb(204, 204, 204);
-    padding-bottom: 30px;
     font-size: 14px;
     color: #959595;
 }

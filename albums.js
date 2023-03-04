@@ -19,36 +19,55 @@ async function init() {
 }
 
 function createAlbumsListElement(albums) {
-    let albumsList = document.createElement('div');
-    albumsList.classList.add('albums-list');
+    let albumsListWrapper = document.createElement('div');
+    albumsListWrapper.classList.add('albums-list-wrapper');
     
     albums.forEach(album => {
-        let albumTitle = firstLetterUpperCase(album.title);
-        let userName = album.user.name;
-        
-        let photoCount = album.photos.length
-        let randomIndex = Math.floor(Math.random() * album.photos.length);
-        let randomPhoto = album.photos[randomIndex];
-        
-        let albumItem = document.createElement('div')
+        let albumItem = document.createElement('div');
         albumItem.classList.add('album-item');
 
-        let a = document.createElement('a');
-        a.href = `./album.html?album_id=${album.id}`
+        let albumLink = document.createElement('a');
+        albumLink.href = `./album.html?album_id=${album.id}`;
+        albumLink.classList.add('album-link')
+
+        let albumTextWrapper = document.createElement('div');
+        albumTextWrapper.classList.add('album-text-wrapper');
+
+        let albumTitle = document.createElement('h3');
+        albumTitle.textContent = firstLetterUpperCase(album.title);
+        albumTitle.classList.add('album-title');
+
+        let photoCount = document.createElement('span');
+        photoCount.textContent = `(${album.photos.length})`
+        photoCount.classList.add('photo-count');
+
+        albumTitle.append(photoCount)
+
+        let randomIndex = Math.floor(Math.random() * album.photos.length);
+        let randomPhoto = album.photos[randomIndex];
 
         let photoElement = document.createElement('img');
-        photoElement.src = randomPhoto.thumbnailUrl
-        photoElement.title = randomPhoto.title
+        photoElement.src = randomPhoto.thumbnailUrl;
+        photoElement.title = randomPhoto.title;
+        photoElement.width = '235'
 
-        const albumPlace = document.createElement('p');
-        albumPlace.textContent = `${albumTitle} (${photoCount}), author: ${userName}`
+        let authorWrapper = document.createElement('div');
+        authorWrapper.classList.add('author-wrapper')
 
-        a.append(photoElement, albumPlace)
-        albumItem.append(a)
+        let userName = document.createElement('p');
+        userName.textContent = album.user.name;
+        userName.classList.add('user-name-albums');
+    
+        authorWrapper.append(userName)
+        albumTextWrapper.append(albumTitle, authorWrapper)
 
-        albumsList.append(albumItem)
+
+        albumLink.append(photoElement, albumTextWrapper);
+        albumItem.append(albumLink);
+
+        albumsListWrapper.append(albumItem);
     })
-    return albumsList
+    return albumsListWrapper
 }
 init()
 
