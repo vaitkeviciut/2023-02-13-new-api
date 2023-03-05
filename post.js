@@ -1,4 +1,4 @@
-import { navigationElement } from "./header.js";
+import header from "./header.js";
 import { firstLetterUpperCase,  firstLetterLowerCase, getParams  } from "./functions.js";
 import { API_URL } from './config.js';
 
@@ -7,14 +7,13 @@ async function init() {
 
     const res = await fetch(`${API_URL}/posts/${id}?_embed=comments&_expand=user`);
     const post = await res.json();
-    console.log(post);
 
     const pageContent = document.querySelector('#page-content');
     const postWrapper = createUserPostElement(post);
-    const header = navigationElement();
+    const headerElement = header();
 
     pageContent.append(postWrapper);
-    pageContent.before(header);
+    pageContent.before(headerElement);
 }
 
 function createUserPostElement (post) {
@@ -28,6 +27,13 @@ function createUserPostElement (post) {
 
 
 
+    let postHeaderWrapper = document.createElement('div');
+    postHeaderWrapper.classList.add('post-header-wrapper');
+
+    const postEditLink = document.createElement('a')
+    postEditLink.textContent = 'Edit'
+    postEditLink.classList.add('post-edit-link')
+    postEditLink.href = `./edit-post.html?post_id=${post.id}`
 
     let userShortcutWrapper = document.createElement('div');
     userShortcutWrapper.classList.add('user-shortcut-wrapper');
@@ -67,6 +73,7 @@ function createUserPostElement (post) {
     userLink.href = `./user.html?user_id=${post.userId}`;
     userLink.append(userNameUsernameWrapper, userCompanyWrapper);
 
+    
     userShortcutNearPhotoWrapper.append(userLink);
     userShortcutWrapper.append(imageSmall, userShortcutNearPhotoWrapper);
 
@@ -85,7 +92,8 @@ function createUserPostElement (post) {
     postBody.textContent = firstLetterUpperCase(body);
 
     postLinkWrapper.append(postTitle, postBody);
-    postContentWrapper.append(userShortcutWrapper, postLinkWrapper);
+    postHeaderWrapper.append(userShortcutWrapper, postEditLink)
+    postContentWrapper.append(postHeaderWrapper, postLinkWrapper);
 
 
 
@@ -101,7 +109,10 @@ function createUserPostElement (post) {
 
     commentsContentWrapper.append(commentsTitle, commentsWrapper);
 
-
+    if (comments.length === 0) {
+        commentsTitle.textContent = "No comments";
+        return commentsContentWrapper;
+      }
 
 
     comments.map(comment => {
@@ -109,6 +120,9 @@ function createUserPostElement (post) {
 
         const oneCommentWrapper = document.createElement('div');
         oneCommentWrapper.classList.add('one-comment-wrapper');
+
+        const oneCommentHeaderWrapper = document.createElement('div');
+        oneCommentHeaderWrapper.classList.add('one-comment-header-wrapper');
 
         const commentTitle = document.createElement('h5');
         commentTitle.textContent = firstLetterUpperCase(name);
@@ -122,7 +136,17 @@ function createUserPostElement (post) {
         commentEmail.textContent = firstLetterLowerCase(email);
         commentEmail.classList.add('comment-email');
 
-        oneCommentWrapper.append(commentEmail, commentTitle, commentBody);
+        const removeButton = document.createElement('button')
+        removeButton.classList.add('remove-comment-button')
+        removeButton.textContent = 'Delete'
+
+        removeButton.addEventListener('click', ()=> {
+            fetchData(`${API_URL}/comments/${id}`, {
+                method: 'DELETE'
+            })
+        })
+        oneCommentHeaderWrapper.append(commentEmail, removeButton)
+        oneCommentWrapper.append(oneCommentHeaderWrapper, commentTitle, commentBody);
         commentsWrapper.append(oneCommentWrapper);
         
     })

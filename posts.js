@@ -1,4 +1,4 @@
-import { navigationElement } from "./header.js";
+import header from "./header.js";
 import { firstLetterUpperCase, getParams } from "./functions.js";
 import { API_URL } from './config.js';
 
@@ -8,22 +8,43 @@ async function init() {
 
     const res = await fetch(`${API_URL}/posts?_expand=user${userParamUrl}&_embed=comments`)
     const posts = await res.json();
-    console.log(posts);
 
     const pageContent = document.querySelector('#page-content');
     const postsList = createPostsListElement(posts);
-    const header = navigationElement();
+    const headerElement = header();
 
     pageContent.append(postsList);
-    pageContent.before(header)
+    pageContent.before(headerElement)
 }
 function createPostsListElement(posts) {
     let postsWrapper = document.createElement('div');
-    postsWrapper.classList.add('posts-wrapper')
+    postsWrapper.classList.add('posts-wrapper');
+
+    let onePostAllWrapper = document.createElement('div');
+    onePostAllWrapper.classList.add('one-posts-all-wrapper');
+
+    const createPostWrapper = document.createElement('div');
+    createPostWrapper.classList.add('create-post-wrapper');
+
+    const plus = document.createElement('span');
+    plus.textContent = '+';
+    plus.classList.add('plus-symbol');
+
+    const plusText = document.createElement('span');
+    plusText.textContent = 'Create Post';
+    plusText.classList.add('plus-text');
+
+    const postCreateLink = document.createElement('a')
+    postCreateLink.href = `./create-post.html?post_id=${posts.id}`
+    postCreateLink.classList.add('post-create-link')
+
+    postCreateLink.prepend(plus, plusText)
+    createPostWrapper.append(postCreateLink)
     
     posts.forEach(post => {
         let onePostWrapper = document.createElement('div');
         onePostWrapper.classList.add('one-post-wrapper')
+        
 
         let postWrapper = document.createElement('div');
         postWrapper.classList.add('post-text-wrapper')
@@ -88,7 +109,9 @@ function createPostsListElement(posts) {
         postLink.append(postTitle, postBody)
 
         postWrapper.append(postLink)
-        postsWrapper.append(onePostWrapper)
+        onePostWrapper.append(userShortcutWrapper, postWrapper)
+        onePostAllWrapper.append(onePostWrapper)
+        postsWrapper.append(postCreateLink, onePostAllWrapper)
     })
     return postsWrapper
 }

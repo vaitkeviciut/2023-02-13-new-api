@@ -1,5 +1,5 @@
 import { API_URL } from './config.js';
-import { navigationElement } from "./header.js";
+import header from "./header.js";
 import { firstLetterUpperCase } from "./functions.js";
 import { firstLetterLowerCase } from "./functions.js";
 
@@ -13,10 +13,10 @@ async function init() {
 
     const pageContent = document.querySelector('#page-content');
     const userWrapper = createUserListElement(user);
-    const header = navigationElement();
+    const headerElement = header();
 
     pageContent.append(userWrapper);
-    pageContent.before(header)
+    pageContent.before(headerElement)
 }
 function createUserListElement(user) {
     let { name, email, phone, username, website, posts, albums } = user;

@@ -1,5 +1,5 @@
-export function navigationElement() {
-    const header = document.createElement('header');
+function header() {
+    const headerElement  = document.createElement('header');
     const nav = document.createElement('nav');
     nav.classList.add('main-navigation');
     const menuNavWrapper = document.createElement('div');
@@ -10,7 +10,6 @@ export function navigationElement() {
     logo.href = './index.html';
     const menuList = document.createElement('ul');
     menuList.classList.add('menu');
-    
 
     const searchForm = document.createElement('form');
     searchForm.classList.add('search-form');
@@ -22,52 +21,50 @@ export function navigationElement() {
     searchButton.classList.add('search-button');
     searchButton.setAttribute('type', 'submit');
     searchButton.setAttribute('value', 'Search');
-    
+    searchForm.action = "./search.html";
 
     let navigationArr = [
         {
             name: 'Home',
-            src: 'index.html'
+            path: 'index.html'
         },
         {
             name: 'Users',
-            src: 'users.html'
+            path: 'users.html'
         },
         {
             name: 'Posts',
-            src: 'posts.html'
+            path: 'posts.html'
         },
         {
             name: 'Albums',
-            src: 'albums.html'
+            path: 'albums.html'
         }
     ]
 
     navigationArr.map(arr => {
-        let name = arr.name;
-        let src = arr.src;
+        let title = arr.name;
+        let path = arr.path;
         const menuItemElement = document.createElement('li');
         menuItemElement.classList.add('menu-item');
 
-        if (location.pathname === '/' + src) {
+        if (location.pathname === '/' + path) {
             menuItemElement.classList.add('active');
         }
-      
-        let menuLink = document.createElement('a');
-        menuLink.href = '/' + src
-        let link = document.createTextNode(name)
-        menuLink.append(link)
-        menuLink.classList.add('navigation-item', 'active')
+
+        const menuLink = document.createElement('a');
+        menuLink.textContent = title;
+        menuLink.href = './' + path;
+        menuLink.classList.add('navigation-item')
 
         menuItemElement.append(menuLink);
         menuList.append(menuItemElement);
     })
+
     searchForm.append(searchInput, searchButton)
     menuNavWrapper.append(searchForm, menuList);
     nav.append(logo, menuNavWrapper)
-    header.append(nav);
-    return header;
+    headerElement .append(nav);
+    return headerElement ;
 }
-
-    
-
+export default header;

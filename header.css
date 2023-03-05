@@ -71,3 +71,9 @@ header {
 .navigation-item:hover {
     color: rgb(163, 149, 125);
 }
+
+.active .navigation-item {
+    color: rgb(163, 149, 125);
+    padding-bottom: 5px;
+    border-bottom: 3px solid rgb(163, 149, 125);
+}

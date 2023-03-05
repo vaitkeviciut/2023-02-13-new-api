@@ -26,6 +26,18 @@
     border-bottom: 1px solid rgb(204, 204, 204);
 }
 
+.author-post-link {
+    color: #4F4F4F;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.author-post-link:hover {
+    color: rgb(199, 180, 148);
+
+}
+
 .comments-wrapper {
     display: flex;
     flex-direction: column;
@@ -44,6 +56,26 @@
     border-radius: 15px;
 }
 
+.one-comment-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-comment-button {
+    padding: 0;
+    border: none;
+    background-color: none;
+    text-transform: uppercase;
+    color: #4F4F4F;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.remove-comment-button:hover {
+    color: rgb(199, 180, 148);
+}
+
+
 .comment-email {
     font-weight: 700;
 }
@@ -53,15 +85,5 @@
     margin-bottom: 0;
 }
 
-.author-post-link {
-    color: #4F4F4F;
-    font-size: 14px;
-    display: flex;
-    justify-content: flex-end;
-}
 
-.author-post-link:hover {
-    color: rgb(199, 180, 148);
-
-}
 

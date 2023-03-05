@@ -1,4 +1,4 @@
-import { navigationElement } from "./header.js";
+import header from "./header.js";
 import { firstLetterUpperCase } from "./functions.js";
 
 async function init() {
@@ -12,10 +12,10 @@ async function init() {
 
     const pageContent = document.querySelector('#page-content');
     const albumsList = createAlbumsListElement(albums);
-    const header = navigationElement();
+    const headerElement = header();
 
     pageContent.append(albumsList);
-    pageContent.before(header)
+    pageContent.before(headerElement)
 }
 
 function createAlbumsListElement(albums) {

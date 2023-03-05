@@ -1,5 +1,5 @@
 import { API_URL } from "./config.js";
-import { navigationElement } from "./header.js";
+import header from "./header.js";
 
 async function init() {
     const res = await fetch(`${API_URL}/users?_embed=posts`)
@@ -8,10 +8,10 @@ async function init() {
 
     const pageContent = document.querySelector('#page-content');
     const usersList = createUsersListElement(users);
-    const header = navigationElement();
+    const headerElement = header();
 
     pageContent.append(usersList);
-    pageContent.before(header)
+    pageContent.before(headerElement)
 }
     
 function createUsersListElement(users) {

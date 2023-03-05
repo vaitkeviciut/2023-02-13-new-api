@@ -11,6 +11,37 @@
     margin-bottom: 100px;
 }
 
+.post-create-link {
+    text-decoration: none;
+    color: #4F4F4F;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.post-create-link:hover {
+    color: rgb(199, 180, 148);
+}
+
+.plus-symbol {
+    font-size: 45px;
+    font-weight: 700;
+    padding: 10px 25px;
+    color: white;
+    background-color: #4F4F4F;
+    border-radius: 50%;
+}
+
+.plus-text {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.one-posts-all-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .one-post-wrapper {
     background-color: white;
     padding: 50px 100px 40px;
@@ -19,20 +50,29 @@
     flex-direction: column;
 }
 
+.post-header-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-bottom: 17px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
 .user-shortcut-wrapper {
     display: flex;
     gap: 20px;
-    padding-bottom: 17px;
-    border-bottom: 1px solid rgb(204, 204, 204);
+    
 }
 
 .user-photo-small {
     border-radius: 50%;
 }
 
+
 .user-shortcut-near-photo-wrapper {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .user-name-link {
@@ -48,6 +88,16 @@
 
 .user-company-wrapper {
     font-size: 14px;
+}
+.post-edit-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #4F4F4F;
+    font-size: 14px;
+}
+.post-edit-link:hover {
+    text-decoration: underline;
+    color: rgb(199, 180, 148);
 }
 
 .user-name-post {
