@@ -32,20 +32,21 @@ header {
 }
 
 .search-input {
-    padding: 5px;
+    padding: 5px 15px;
     border: none;
-    padding: 7px;
     font-family: 'Golos Text', sans-serif;
+    border-radius: 10px;
 }
 
 .search-button {
-    padding: 5px 10px;
+    padding: 5px 15px;
     background-color: #4F4F4F;
     color: white;
     border: none;
     font-family: 'Golos Text', sans-serif;
     font-weight: 500;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .search-button:hover {
