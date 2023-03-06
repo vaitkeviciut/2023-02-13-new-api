@@ -7,28 +7,38 @@
     <title>Create Post</title>
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="create-post.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <form id="create-post-form">
-        <div class="form-control">
-            <label for="title">Post title:</label>
-            <input type="text" name="title" id="title">
-        </div>
-        <div class="form-control">
-            <label for="body">Post body:</label>
-            <textarea name="body" id="body" cols="30" rows="10"></textarea>
+    <div id="page-content">
+        <div class="form-and-title-wrapper">
+            <h2 class="create-post-title">Create post</h2>
+            <form id="create-post-form">
+                <div class="form-control">
+                    <label class="create-post-section-title" for="title">Post title:</label>
+                    <input class="create-post-text" type="text" name="title" id="title">
+                </div>
+                <div class="form-control">
+                    <label class="create-post-section-title" for="body">Post body:</label>
+                    <textarea class="create-post-text" name="body" id="body" cols="30" rows="10"></textarea>
+                </div>
+                
+                <div class="form-control">
+                    <label class="create-post-section-title" for="user">Post Author:</label>  
+                    <select class="create-post-text" name="user" id="user"></select>
+                </div>
+                <div class="edit-post-button-wrapper">
+                    <input class="edit-post-button" id="submit" type="submit" value="Create Post" disabled>
+                </div>
+                
+            </form>
         </div>
         
-        <div class="form-control">
-            <label for="user">Post Author:</label>  
-            <select name="user" id="user"></select>
-        </div>
+    </div>
         
-        <input id="submit" type="submit" value="Create Post" disabled>
-    </form>
     
     <script type="module" src="./create-post.js"></script>
 </body>

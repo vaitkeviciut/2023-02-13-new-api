@@ -1,17 +1,21 @@
 import { API_URL } from './config.js';
-import { fetchData, getParams } from './functions.js';
+import { fetchData, getParams, firstLetterUpperCase } from './functions.js';
 import header from './header.js';
 import searchForm from './searchForm.js';
 
 async function init() {
   const searchQuery = getParams("search");
   const pageContent = document.querySelector('#page-content');
+  const formAndTitleWrapper = document.querySelector('.form-and-title-wrapper')
+  const searchTitle = document.querySelector('.create-post-title')
 
+  formAndTitleWrapper.prepend(searchTitle)
+  pageContent.append(formAndTitleWrapper)
   pageContent.before(header(true));
 
   const form = searchForm();
   const allSearchResults = await renderAllSearchResults(searchQuery);
-  pageContent.append(form, allSearchResults);
+  formAndTitleWrapper.append(form, allSearchResults);
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -20,7 +24,7 @@ async function init() {
     document.querySelector(".all-search-results").remove();
 
     const searchInputResults = await renderAllSearchResults(searchInput);
-    pageContent.append(searchInputResults);
+    formAndTitleWrapper.append(searchInputResults);
   });
 }
 
@@ -37,7 +41,7 @@ function searchResults(searchArr, searchCategory) {
     return resultsWrapper;
   }
 
-  searchWrapperTitle.textContent = `${searchCategory} (${
+  searchWrapperTitle.textContent = `${firstLetterUpperCase(searchCategory)} (${
     searchArr.length
   }):`;
 
@@ -51,6 +55,7 @@ function searchResults(searchArr, searchCategory) {
     searchItem.classList.add("search-item");
 
     const searchLink = document.createElement("a");
+    searchLink.classList.add('search-item-link')
     searchLink.text = item.title;
     searchLink.href = item.path;
 
@@ -98,14 +103,14 @@ async function renderAllSearchResults(searchQuery) {
 
   const postsSearchData = posts.map((post) => {
     return {
-      title: `${post.title} (${post.user.name})`,
+      title: `${firstLetterUpperCase(post.title)} (${post.user.name})`,
       path: "./post.html?post_id=" + post.id,
     };
   });
 
   const albumsSearchData = albums.map((album) => {
     return {
-      title: `${album.title}, created by ${album.user.name}`,
+      title: `${firstLetterUpperCase(album.title)}, created by ${album.user.name}`,
       path: "./album.html?album_id=" + album.id,
     };
   });

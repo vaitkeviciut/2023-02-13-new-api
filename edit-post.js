@@ -1,13 +1,19 @@
+import header from "./header.js";
 import { fetchData, firstLetterUpperCase, getParams } from './functions.js';
 import { API_URL } from './config.js';
 
 async function init() {
+  const pageContent = document.querySelector('#page-content');
   const createPostForm = document.getElementById('create-post-form');
   const userSlelectELemenet = createPostForm.user;
   const titleElement = createPostForm.title;
   const bodyElement = createPostForm.body;
 
   const submitButton = createPostForm.submit;
+
+  const headerElement = header();
+
+  pageContent.before(headerElement)
   
   const users = await fetchData(`${API_URL}/users`);
 
