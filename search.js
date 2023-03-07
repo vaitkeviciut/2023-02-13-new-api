@@ -19,7 +19,7 @@ async function init() {
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const searchInput = event.target["search"].value;
+    const searchInput = event.target["search-query"].value;
 
     document.querySelector(".all-search-results").remove();
 
